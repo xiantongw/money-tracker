@@ -1,15 +1,31 @@
+"use client";
+
 import Logo from "@/components/logo";
-import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import Navigations from "./navigations";
+import {
+  OrganizationSwitcher,
+  useOrganization,
+  useOrganizationList,
+  UserButton,
+} from "@clerk/nextjs";
+import { NavItems, Organization } from "./nav-items";
 
 const Navbar = () => {
+  const { organization, isLoaded } = useOrganization();
+
   return (
     <nav className="fixed bg-white border-gray-200 dark:bg-gray-900 px-4 py-1 border-b shadow-sm w-full flex items-center">
       <div>
         <Logo />
       </div>
       <div className="ml-auto flex items-center gap-x-2 ">
-        <Navigations />
+        {isLoaded ? (
+          <NavItems
+            key={organization?.id}
+            organization={organization as Organization}
+          />
+        ) : (
+          <NavItems.Skeleton />
+        )}
       </div>
       <div className="ml-auto flex items-center gap-x-2">
         <OrganizationSwitcher

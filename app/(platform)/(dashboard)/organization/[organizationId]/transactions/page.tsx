@@ -1,5 +1,5 @@
 const TransactionsPage = () => {
-  return <div className="pt-50"> transactions </div>;
+  return <div className="pt-20"> transactions </div>;
 };
 
 export default TransactionsPage;
