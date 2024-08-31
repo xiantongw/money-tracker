@@ -1,10 +1,16 @@
 import Logo from "@/components/logo";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
+import Navigations from "./navigations";
 
 const Navbar = () => {
   return (
     <nav className="fixed bg-white border-gray-200 dark:bg-gray-900 px-4 py-1 border-b shadow-sm w-full flex items-center">
-      <Logo />
+      <div>
+        <Logo />
+      </div>
+      <div className="ml-auto flex items-center gap-x-2 ">
+        <Navigations />
+      </div>
       <div className="ml-auto flex items-center gap-x-2">
         <OrganizationSwitcher
           hidePersonal
